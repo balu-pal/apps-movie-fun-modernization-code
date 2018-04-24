@@ -93,6 +93,7 @@ public class ActionServlet extends HttpServlet {
                 count = moviesBean.count(field, key);
             }
 
+            
             int page = 1;
 
             try {
