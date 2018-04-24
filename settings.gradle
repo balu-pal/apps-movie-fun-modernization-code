@@ -1,1 +1,8 @@
-rootProject.name = 'moviefun'
+rootProject.name = 'movie-fun-app'
+
+include "applications:movie-fun-app"
+include "components:movies"
+include "components:albums"
+include "components:albums-api"
+include "components:albums-persistence"
+include "components:blobstore"

@@ -1,4 +1,4 @@
-package org.superbiz.moviefun.albums;
+package org.superbiz.moviefun.albums.api;
 
 import org.apache.tika.io.IOUtils;
 import org.slf4j.Logger;
@@ -9,8 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.superbiz.moviefun.blobstore.Blob;
-import org.superbiz.moviefun.blobstore.BlobStore;
+import org.superbiz.moviefun.Blob;
+import org.superbiz.moviefun.BlobStore;
+import org.superbiz.moviefun.albums.AlbumsBean;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +21,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import static java.lang.String.format;
-import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 
 @Controller
 @RequestMapping("/albums")
@@ -92,7 +93,7 @@ public class AlbumsController {
         ClassLoader classLoader = getClass().getClassLoader();
         InputStream input = classLoader.getResourceAsStream("default-cover.jpg");
 
-        return new Blob("default-cover", input, IMAGE_JPEG_VALUE);
+        return new Blob("default-cover", input, MediaType.IMAGE_JPEG_VALUE);
     }
 
     private String getCoverBlobName(@PathVariable long albumId) {
